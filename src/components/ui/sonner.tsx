@@ -13,9 +13,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
       position="top-right"
       style={
         {
-          "--normal-bg": "palevioletred", // A slightly darker shade of pink
+          "--normal-bg": "palevioletred",
           "--normal-text": "rose",
           "--normal-border": "var(--border)",
+          top: "60px", // Add your desired top spacing here
         } as React.CSSProperties
       }
       {...props}
