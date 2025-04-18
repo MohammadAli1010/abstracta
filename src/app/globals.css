@@ -180,16 +180,6 @@
   }
 }
 
-/* Positioning the toast container at top-right */
-.toaster {
-  position: fixed;
-  top: 20px; /* Adjust the distance from the top */
-  right: 20px; /* Adjust the distance from the right */
-  z-index: 9999; /* Make sure it appears above other elements */
-  pointer-events: none; /* Optional: Ensure clicks pass through */
-}
 
-.toaster > div {
-  pointer-events: auto; /* Enable interaction on toast elements */
-}
+
 
