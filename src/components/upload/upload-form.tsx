@@ -3,6 +3,8 @@
 import UploadFormInput from "@/components/upload/upload-form-input";
 import React from "react";
 import { z } from "zod";
+import { useUploadThing } from "../../../utils/uploadthing";
+import { toast } from "sonner";
 
 const schema = z.object({
   file: z
@@ -18,9 +20,26 @@ const schema = z.object({
 });
 
 export default function UploadForm() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { startUpload, routeConfig } = useUploadThing("pdfUploader", {
+    onClientUploadComplete: () => {
+      console.log("upload successfully!");
+    },
+    onUploadError: (err) => {
+      console.error("error occured while uploading", err);
+      toast(
+        "Error Occured While Uploading",
+
+        { description: err.message }
+      );
+    },
+    onUploadBegin: ({ file }) => {
+      console.log("upload has begun for", file);
+    },
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("submitted");
+
     const formData = new FormData(e.currentTarget);
     const file = formData.get("file") as File;
 
@@ -30,13 +49,33 @@ export default function UploadForm() {
     console.log(validatedFields);
 
     if (!validatedFields.success) {
-      console.log(
-        validatedFields.error.flatten().fieldErrors.file?.[0] ?? "Invalid file"
-      );
+      toast.error("❌ Something went wrong", {
+        description:
+          validatedFields.error.flatten().fieldErrors.file?.[0] ??
+          "Invalid file",
+      });
       return;
     }
+
+    toast("📄 Uploading PDF...", {
+      description: "We are uploading your PDF! ✨",
+    });
+
     //schema with zod//
     //upload the file to uploadthing
+    const resp = await startUpload([file]);
+    if (!resp) {
+      toast.error("❌ Something went wrong"),
+        {
+          description: "Please use a different file",
+        };
+      return;
+    }
+
+    toast("📄 Processing PDF", {
+      description: "Hang tight! Our AI is reading through your document! ✨",
+    });
+
     //parse the pdf using lang chain
     //summarize the pdf using AI
     //save the summary to the database
