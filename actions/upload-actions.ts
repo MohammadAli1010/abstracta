@@ -52,6 +52,7 @@ try{
         //call gemini
         if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED'){
             try{
+                summary = await generateSummaryFormGemini(pdfText);
 
             } catch(geminiError){
                 console.error('Gemini API failed after OpenAI quota exceeded ',geminiError);
