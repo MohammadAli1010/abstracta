@@ -50,6 +50,14 @@ try{
     }catch (error){
         console.log(error);
         //call gemini
+        if (error instanceof Error && error.message === 'RATE_LIMIT_EXCEEDED'){
+            try{
+
+            } catch(geminiError){
+                console.error('Gemini API failed after OpenAI quota exceeded ',geminiError);
+                throw new Error('Failed to generate summary with available AI providers');
+            }
+        }
     }
 
     if(!summary){
