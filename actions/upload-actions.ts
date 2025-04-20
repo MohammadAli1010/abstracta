@@ -89,3 +89,14 @@ try{
     };
 }
 }
+
+export async function storePdfSummaryAction(){
+    
+    //user is logged in and has a userid
+    //savePdfsummary
+    //savepdfsummary()
+
+    try{
+
+    }catch(error){}
+}
