@@ -5,7 +5,7 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function generateSummaryFormOpenAI(pdfText:string){
+export async function generateSummaryFromOpenAI(pdfText:string){
     try{
         const completion = await openai.chat.completions.create({
             model: 'gpt-4o',
