@@ -5,7 +5,10 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { useUploadThing } from "../../../utils/uploadthing";
 import { toast } from "sonner";
-import { generatePdfSummary } from "../../../actions/upload-actions";
+import {
+  generatePdfSummary,
+  storePdfSummaryAction,
+} from "../../../actions/upload-actions";
 import { useRef } from "react";
 
 const schema = z.object({
@@ -91,13 +94,25 @@ export default function UploadForm() {
       const { data = null, message = null } = result || {};
 
       if (data) {
+        let storeResult: any;
         toast("📄 Saving PDF...", {
           description: "Saving your PDF summary! ✨",
         });
 
-        formRef.current?.reset();
-
         if (data.summary) {
+          storeResult = await storePdfSummaryAction({
+            summary: data.summary,
+            fileUrl: resp[0].serverData.file.url,
+            title: data.title,
+            fileName: file.name,
+          });
+
+          toast("✨ Summary Generated", {
+            description:
+              "Your PDF has been successfully summarized and saved! ✨",
+          });
+
+          formRef.current?.reset();
         }
         //save data to the database
       }
