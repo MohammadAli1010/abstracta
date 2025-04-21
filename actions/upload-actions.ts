@@ -131,7 +131,7 @@ async function savePdfSummary({
         ${fileUrl},
         ${summary},
         ${title},
-        ${fileName},
+        ${fileName}
 
     );`;
 
