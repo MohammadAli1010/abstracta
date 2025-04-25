@@ -10,6 +10,7 @@ import {
   storePdfSummaryAction,
 } from "../../../actions/upload-actions";
 import { useRef } from "react";
+import { useRouter } from "next/router";
 
 const schema = z.object({
   file: z
@@ -27,6 +28,7 @@ const schema = z.object({
 export default function UploadForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const { startUpload, routeConfig } = useUploadThing("pdfUploader", {
     onClientUploadComplete: () => {
       console.log("upload successfully!");
@@ -113,6 +115,7 @@ export default function UploadForm() {
           });
 
           formRef.current?.reset();
+          router.push(`/summaries/${storeResult.data.id}`);
         }
         //save data to the database
       }
@@ -120,6 +123,8 @@ export default function UploadForm() {
       setIsLoading(false);
       console.error("Error Occured", error);
       formRef.current?.reset();
+    } finally {
+      setIsLoading(false);
     }
 
     //summarize the pdf using AI
