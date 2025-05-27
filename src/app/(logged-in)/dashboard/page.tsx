@@ -12,6 +12,7 @@ export default function DashboardPage() {
       title: "Sous Soul",
       created_at: "2025-01-30 20:53:10.759642+00",
       summary_text: "description",
+      status: "completed",
     },
   ];
   return (
