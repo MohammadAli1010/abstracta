@@ -12,8 +12,8 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { useState } from "react";
-import { deleteSummary } from "../../../actions/summary-actions";
-import { toast } from "sonner";
+import { deleteSummaryAction } from "../../../actions/summary-actions";
+import { toast, useSonner } from "sonner";
 
 interface DeleteButtonProps {
   summaryId: string;
@@ -25,7 +25,7 @@ export default function DeleteButton({ summaryId }: DeleteButtonProps) {
   const handleDelete = async () => {
     //TODO: Delete Summary
     //await deleteSummary(summaryId);
-    const result = await deleteSummary({ summaryId });
+    const result = await deleteSummaryAction({ summaryId });
     if (!result.success) {
       toast.error("Error", {
         description: "Failed to delete summary",
