@@ -1,20 +1,24 @@
 import BgGradient from "@/components/common/bg-gradient";
 import SummaryCard from "@/components/summaries/summary-card";
 import { Button } from "@/components/ui/button";
+import { getSummaries } from "@/lib/summaries";
+import { currentUser } from "@clerk/nextjs/server";
 import { ArrowRight, Plus } from "lucide-react";
-import Link from "next/link";
 
-export default function DashboardPage() {
+import Link from "next/link";
+import { redirect } from "next/navigation";
+
+export default async function DashboardPage() {
+  const user = await currentUser();
+  const userId = user?.id;
+
+  if (!userId) {
+    return redirect("/sign-in");
+  }
+
   const uploadLimit = 5;
-  const summaries = [
-    {
-      id: 1,
-      title: "Sous Soul",
-      created_at: "2025-01-30 20:53:10.759642+00",
-      summary_text: "description",
-      status: "completed",
-    },
-  ];
+  const summaries = await getSummaries(userId);
+
   return (
     <main className="min-h-screen">
       <BgGradient className="from-emerald-200 via-teal-200 to-cyan-200" />
