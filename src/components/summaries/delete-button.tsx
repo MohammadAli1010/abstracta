@@ -21,7 +21,7 @@ interface DeleteButtonProps {
 
 export default function DeleteButton({ summaryId }: DeleteButtonProps) {
   const [open, setOpen] = useState(false);
-  const [isPending, startTransaction] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const handleDelete = async () => {
     startTransition(async () => {
