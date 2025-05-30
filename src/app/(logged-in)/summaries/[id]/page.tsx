@@ -18,7 +18,14 @@ export default async function SummaryPage(props: {
     notFound();
   }
 
-  const { title, summary_text, file_name, word_count, created_at } = summary;
+  const {
+    title,
+    summary_text,
+    file_name,
+    word_count,
+    created_at,
+    original_file_url,
+  } = summary;
 
   const readingTime = Math.ceil((word_count || 0) / 200);
 
@@ -34,7 +41,15 @@ export default async function SummaryPage(props: {
               readingTime={readingTime}
             />
           </div>
-          {file_name && <SourceInfo fileName={file_name} />}
+          {file_name && (
+            <SourceInfo
+              title={title}
+              summaryText={summary_text}
+              fileName={file_name}
+              createdAt={created_at}
+              originalFileUrl={original_file_url}
+            />
+          )}
           <div className="relative mt-4 sm:mt-8 lg:mt-16">
             <div className="relative p-4 sm:p-6 lg:p-8 sm:rounded-3xl shadow-xl border border-rose-100/30 transition-all duration-300 hover:shadow-2xl hover:bg-white/90 max-w-4xl mx-auto">
               <div className="absolute inset-0 bg-linear-to-br from-rose-50/50 via-orange-50/30 to-transparent opacity-50 rounded-2xl sm:rounded-3xl " />
