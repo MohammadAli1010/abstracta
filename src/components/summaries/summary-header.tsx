@@ -1,19 +1,21 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Calendar, ChevronLeft, Sparkles } from "lucide-react";
+import { Calendar, ChevronLeft, Clock, Sparkles } from "lucide-react";
 import { Badge } from "../ui/badge";
 
 export function SummaryHeader({
   title,
   createdAt,
+  readingTime,
 }: {
   title: string;
-  createdAt: string | Date;
+  createdAt: string;
+  readingTime: number;
 }) {
   return (
     <div className="flex gap-4 mb-4 justify-between">
       <div className="space-y-6">
-        <div className="">
+        <div className="flex flex-wrap items-center gap-4">
           <Badge
             variant="secondary"
             className="relative px-4 py-1.5 text-sm font-medium bg-white/80 backdrop-blur-xs rounded-full hover:bg-white/90 transition-all duration-200 shadow-xs hover:shadow-md"
@@ -28,6 +30,10 @@ export function SummaryHeader({
               month: "long",
               day: "numeric",
             })}
+          </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Clock className="h-4 w-4 text-rose-400" />
+            {readingTime} min read
           </div>
         </div>
       </div>
