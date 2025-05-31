@@ -1,42 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card } from "../ui/card";
 import { NavigationControls } from "./navigation-controls";
 import ProgressBar from "./progress-bar";
+import { parseSection } from "../../../utils/summary-helpers";
 
-const parseSection = (section: string): { title: string; points: string[] } => {
-  const [title, ...content] = section.split("\n");
-
-  const cleanTitle = title.startsWith("#")
-    ? title.substring(1).trim()
-    : title.trim();
-
-  const points: String[] = [];
-
-  let currentPoint = "";
-
-  content.forEach((line) => {
-    const trimmedLine = line.trim();
-    if (trimmedLine.startsWith("•")) {
-      if (currentPoint) points.push(currentPoint.trim());
-      currentPoint = trimmedLine;
-    } else if (!trimmedLine) {
-      if (currentPoint) points.push(currentPoint.trim());
-      currentPoint = "";
-    } else {
-      currentPoint += " " + trimmedLine;
-    }
-  });
-
-  if (currentPoint) points.push(currentPoint.trim());
-
-  return {
-    title: cleanTitle,
-    points: points.filter(
-      (point) => point && !point.startsWith("#") && !point.startsWith("[Choose")
-    ) as string[],
-  };
+const SectionTitle = ({ title }: { title: string }) => {
+  return (
+    <div className="flex flex-col gap-2 mb-6 sticky top-0 pt-2 pb-4 bg-background/80 backdrop-blur-xs z-10">
+      <h2 className="text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2">
+        {title}
+      </h2>
+    </div>
+  );
 };
 
 export function SummaryViewer({ summary }: { summary: string }) {
@@ -60,7 +37,7 @@ export function SummaryViewer({ summary }: { summary: string }) {
       <ProgressBar sections={sections} currentSection={currentSection} />
       <div className="h-full overflow-y-auto scrollbar-hide pt-12 sm:pt16 pb-20 sm:pb-24">
         <div className="px-4 sm:px-6">
-          <h2>{sections[currentSection]?.title || ""}</h2>
+          <SectionTitle title={sections[currentSection]?.title || ""} />
           <ul>
             {sections[currentSection]?.points.map((point, index) => (
               <li key={index}>{point}</li>
