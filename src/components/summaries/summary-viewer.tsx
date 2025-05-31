@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { NavigationControls } from "./navigation-controls";
 
 const parseSection = (section: string) => {
   const [title, ...content] = section.split("\n");
@@ -40,6 +41,12 @@ const parseSection = (section: string) => {
 export function SummaryViewer({ summary }: { summary: string }) {
   const [currentSection, setCurrentSection] = useState(0);
 
+  const handleNext = () =>
+    setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1));
+
+  const handlePrevious = () =>
+    setCurrentSection((prev) => Math.max(prev - 1, 0));
+
   //parseSummary
 
   const sections = summary
@@ -54,6 +61,14 @@ export function SummaryViewer({ summary }: { summary: string }) {
       </CardHeader>
       <CardContent>
         {JSON.stringify(sections[currentSection].points)}
+
+        <NavigationControls
+          currentSection={currentSection}
+          totalSections={sections.length}
+          onPrevious={handlePrevious}
+          onNext={handleNext}
+          onSectionSelect={setCurrentSection}
+        />
       </CardContent>
     </Card>
   );
