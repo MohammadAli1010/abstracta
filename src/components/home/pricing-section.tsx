@@ -25,7 +25,10 @@ const plans = [
       "PDF Export",
     ],
     id: "basic",
-    paymentLink: "",
+    paymentLink:
+      process.env.NODE_ENV === "development"
+        ? "https://rzp.io/rzp/UeIRn8I"
+        : "",
     priceId: "",
   },
   {
@@ -39,7 +42,10 @@ const plans = [
       "Markdown Export",
     ],
     id: "pro",
-    paymentLink: "",
+    paymentLink:
+      process.env.NODE_ENV === "development"
+        ? "https://rzp.io/rzp/q4l8XTI5"
+        : "",
     priceId: "",
   },
 ];
