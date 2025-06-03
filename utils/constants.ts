@@ -1,3 +1,5 @@
+import { isDev } from "./helpers";
+
 export const pricingPlans = [
   {
     name: "basic",
@@ -11,11 +13,11 @@ export const pricingPlans = [
     ],
     id: "basic",
     paymentLink:
-      process.env.NODE_ENV === "development"
+      isDev
         ? "https://rzp.io/rzp/UeIRn8I"
         : "",
     priceId:
-      process.env.NODE_ENV === "development" ? "plan_QcJUH0oJkXtvmB" : "",
+      isDev ? "plan_QcJUH0oJkXtvmB" : "",
   },
   {
     name: "Pro",
@@ -29,10 +31,10 @@ export const pricingPlans = [
     ],
     id: "pro",
     paymentLink:
-      process.env.NODE_ENV === "development"
+      isDev
         ? "https://rzp.io/rzp/q4l8XTI5"
         : "",
     priceId:
-      process.env.NODE_ENV === "development" ? "plan_QcJUSM2I1ap8DU" : "",
+      isDev ? "plan_QcJUSM2I1ap8DU" : "",
   },
 ];

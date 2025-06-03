@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import NavLink from "./nav-links";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
+import PlanBadge from "./plan-badge";
 
 export default function Header() {
   return (
@@ -28,7 +29,7 @@ export default function Header() {
         <SignedIn>
           <div className="flex gap-2 items-center">
             <NavLink href="/upload">Upload a PDF</NavLink>
-            <div>Pro</div>
+            <PlanBadge />
             <SignedIn>
               <UserButton />
             </SignedIn>
