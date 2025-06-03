@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { CheckIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
+import { pricingPlans } from "../../../utils/constants";
 
 type PriceType = {
   name: string;
@@ -12,43 +13,6 @@ type PriceType = {
   paymentLink: string;
   priceId: string;
 };
-
-const plans = [
-  {
-    name: "basic",
-    price: 9,
-    description: "For casual users and learners",
-    items: [
-      "20 PDF Summaries/month",
-      "Standard processing",
-      "Email support",
-      "PDF Export",
-    ],
-    id: "basic",
-    paymentLink:
-      process.env.NODE_ENV === "development"
-        ? "https://rzp.io/rzp/UeIRn8I"
-        : "",
-    priceId: "",
-  },
-  {
-    name: "Pro",
-    price: 19,
-    description: "For professionals and teams",
-    items: [
-      "Unlimited PDF Summaries",
-      "Priority processing",
-      "24/7 priority support",
-      "Markdown Export",
-    ],
-    id: "pro",
-    paymentLink:
-      process.env.NODE_ENV === "development"
-        ? "https://rzp.io/rzp/q4l8XTI5"
-        : "",
-    priceId: "",
-  },
-];
 
 const PricingCard = ({
   name,
@@ -116,7 +80,7 @@ export default function PricingSection() {
           </h2>
         </div>
         <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
-          {plans.map((plan) => (
+          {pricingPlans.map((plan) => (
             <PricingCard key={plan.id} {...plan} />
           ))}
         </div>
