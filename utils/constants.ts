@@ -6,10 +6,9 @@ export const pricingPlans = [
     price: 9,
     description: "For casual users and learners",
     items: [
-      "20 PDF Summaries/month",
-      "Standard processing",
+      "5 PDF Summaries per month",
+      "Standard processing speed",
       "Email support",
-      "PDF Export",
     ],
     id: "basic",
     paymentLink:
