@@ -2,7 +2,7 @@ import { isDev } from "./helpers";
 
 export const pricingPlans = [
   {
-    name: "basic",
+    name: "Basic",
     price: 9,
     description: "For casual users and learners",
     items: [
@@ -14,10 +14,10 @@ export const pricingPlans = [
     id: "basic",
     paymentLink:
       isDev
-        ? "https://rzp.io/rzp/UeIRn8I"
+        ? "https://buy.stripe.com/test_eVqaEZ7488UN4FN7fp9sk00"
         : "",
     priceId:
-      isDev ? "plan_QcJUH0oJkXtvmB" : "",
+      isDev ? "price_1RV1VQR947lRU6w62LP8zIHK" : "",
   },
   {
     name: "Pro",
@@ -32,9 +32,9 @@ export const pricingPlans = [
     id: "pro",
     paymentLink:
       isDev
-        ? "https://rzp.io/rzp/q4l8XTI5"
+        ? "https://buy.stripe.com/test_cNibJ32NS5IBfkr8jt9sk01"
         : "",
     priceId:
-      isDev ? "plan_QcJUSM2I1ap8DU" : "",
+      isDev ? "price_1RV1WUR947lRU6w6wLVXy2W1" : "",
   },
 ];
