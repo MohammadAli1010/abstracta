@@ -1,9 +1,44 @@
 import { Pizza } from "lucide-react";
+import { MotionDiv, MotionH3 } from "../common/motion-wrapper";
+import { SummaryViewer } from "../summaries/summary-viewer";
+
+const DEMO_SUMMARY = `⚡ Next.js: The Full-Stack React Framework That Scales
+🎯 Next.js makes building fast, scalable web apps with React easy and production-ready.
+• 📌 It combines the best of server and client rendering, routing, and performance in one sleek package.
+
+# Document Details
+• 📑 Type: Technical Guide
+• 👥 For: Web developers, software engineers, tech startups
+
+# Key Highlights
+• 🚀 Built-in routing and API routes for seamless full-stack development
+• ⭐ Supports server-side rendering (SSR), static site generation (SSG), and hybrid modes
+• 💫 Optimized performance with image optimization, incremental static regeneration, and more
+
+# Why It Matters
+• 💡 Next.js simplifies complex app architectures. Whether you're building a blog, SaaS platform, or e-commerce site, it provides scalable tools and exceptional performance without configuration headaches.
+
+# Main Points
+• 🎯 Zero-config setup lets you start coding right away
+• 💪 API routes turn your frontend into a backend in minutes
+• 🔥 Vercel integration makes deploying your app lightning-fast
+
+# Pro Tips
+• ⭐ Use getStaticProps and getServerSideProps smartly to balance speed and freshness
+• 💎 Leverage middleware for authentication and request preprocessing
+• 🌟 Optimize images using the built-in next/image component to boost Core Web Vitals
+
+# Key Terms to Know
+• 📚 SSR (Server-Side Rendering): Generates pages on each request for dynamic data
+• 🔍 ISR (Incremental Static Regeneration): Updates static pages after deployment without rebuilding the whole site
+
+# Bottom Line
+• 💫 Next.js is your go-to framework for building modern, performant React apps—fast, flexible, and built for scale.`;
 
 export default function DemoSection() {
   return (
     <section className="relative">
-      <div className="py-12 lg:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 lg:pt-12">
+      <div className="mx-auto max-w-2xl w-full px-4">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl"
@@ -21,17 +56,31 @@ export default function DemoSection() {
             <Pizza className="w-6 h-6 text-red-500"></Pizza>
           </div>
           <div className="text-center mb-16">
-            <h3 className="font-bold text-3xl max-w-2xl mx-auto px-4 sm:px-6">
+            <MotionH3
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="font-bold text-3xl max-w-2xl mx-auto px-4 sm:px-6"
+            >
               Watch how Abstracta transforms{" "}
               <span className="bg-linear-to-r from-rose-500 to-rose-700 bg-clip-text text-transparent">
                 this Next.js course PDF
               </span>{" "}
               into an easy-to-read summary!
-            </h3>
+            </MotionH3>
           </div>
-          <div className="flex justify-center items-center px-2 sm:px-4 lg:px-6">
-            {/* Summary Viewer */}
-          </div>
+        </div>
+
+        <div className="flex justify-center items-center px-2 sm:px-4 lg:px-6">
+          {/* Summary Viewer */}
+          <MotionDiv
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="w-full max-w-4xl mx-auto px-4"
+          >
+            <SummaryViewer summary={DEMO_SUMMARY} />
+          </MotionDiv>
         </div>
       </div>
     </section>
