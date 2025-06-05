@@ -37,3 +37,27 @@ export const pricingPlans = [
       isDev ? "price_1RV1WUR947lRU6w6wLVXy2W1" : "",
   },
 ];
+
+export const containerVariants = {
+  hidden: { opacity: 0},
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+export const itemVariants = {
+  hidden: { opacity: 0, y: 20},
+  visible: {
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      damping: 15,
+      stiffness: 50,
+      duration: 0.8,
+    },
+  },
+};
