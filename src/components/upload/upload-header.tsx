@@ -32,7 +32,7 @@ export default function UploadHeader() {
         </span>{" "}
         <MotionDiv
           variants={itemVariants}
-          className="mt-2 text-lg leading-8 text-gray-600 max-w-2xl text-center"
+          className="mt-2 text-lg leading-8 text-gray-600 max-w-2xl text-center pb-8"
         >
           <p>Upload your PDF and let our AI do the magic! ✨ </p>
         </MotionDiv>
