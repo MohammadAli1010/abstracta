@@ -1,8 +1,8 @@
-// const config = {
-//   plugins: ["@tailwindcss/postcss"],
-// };
+const config = {
+  plugins: ["@tailwindcss/postcss"],
+};
 
-// export default config;
+export default config;
 
 // import tailwindcss from "tailwindcss";
 // import autoprefixer from "autoprefixer";
@@ -23,10 +23,10 @@
 
 // export default config;
 
-import tailwindcss from "tailwindcss";
+// import tailwindcss from "tailwindcss";
 
-const config = {
-  plugins: [tailwindcss()],
-};
+// const config = {
+//   plugins: [tailwindcss()],
+// };
 
-export default config;
+// export default config;
