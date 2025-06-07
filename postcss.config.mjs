@@ -33,3 +33,11 @@ export default config;
 // };
 
 // export default config;
+
+// /** @type {import('postcss-load-config').Config} */
+// module.exports = {
+//   plugins: {
+//     "@tailwindcss/postcss": {},
+//     autoprefixer: {},
+//   },
+// };
