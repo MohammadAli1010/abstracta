@@ -11,10 +11,11 @@ export const pricingPlans = [
       "Email support",
     ],
     id: "basic",
-    paymentLink:
-      isDev
-        ? "https://buy.stripe.com/test_eVqaEZ7488UN4FN7fp9sk00"
-        : "",
+    paymentLink:"https://buy.stripe.com/test_eVqaEZ7488UN4FN7fp9sk00",
+    // paymentLink:
+    //   isDev
+    //     ? "https://buy.stripe.com/test_eVqaEZ7488UN4FN7fp9sk00"
+    //     : "",
     priceId:
       isDev ? "price_1RV1VQR947lRU6w62LP8zIHK" : "",
   },
