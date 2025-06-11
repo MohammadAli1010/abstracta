@@ -81,3 +81,4 @@ export default function SummaryCard({ summary }: { summary: any }) {
     </MotionDiv>
   );
 }
+//could work to improve the summary card
