@@ -20,6 +20,31 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+🧪 Testing Payments with Stripe (Sandbox Mode)
+This app uses Stripe for handling payments. You can test out the payment flow using Stripe’s sandbox (test) environment — no real charges will be made.
+
+✅ Test Card Details
+To test the checkout flow:
+
+Select a plan from the Pricing section.
+
+Click the Buy Now button.
+
+On the Stripe checkout page, use the following test card details:
+
+Card Number: 4242 4242 4242 4242  
+Expiry Date: Any future date (e.g., 12/34)  
+CVC: Any 3 digits (e.g., 123)
+
+💡 You can find more test cards in the Stripe Testing Documentation.
+
+⚠️ Important
+This application is in test mode and will not process real payments.
+
+Make sure you're using test card numbers — real cards will not work here.
+
+If you're testing locally, ensure your environment variables are correctly set with Stripe test keys.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
