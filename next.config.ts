@@ -13,7 +13,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // Your existing config
-  allowedDevOrigins: ["https://abstracta.loca.lt"],
+  allowedDevOrigins: ["https://abstracta.vercel.app"],
 
   webpack: (config) => {
     config.resolve.alias = {
