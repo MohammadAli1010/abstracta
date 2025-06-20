@@ -32,5 +32,7 @@ export async function generateSummaryFromOpenAI(pdfText:string){
     
 }
 
+// future reference - FIX openAI or just remove it and keep only gemini
+
 
 
